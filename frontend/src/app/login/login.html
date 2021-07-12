@@ -1,0 +1,17 @@
+<div ng-controller="loginCtrl" class="login-box">
+  <h3>Login</h3>
+    <input
+      type="text"
+      class="username-input"
+      placeholder="Username"
+      autocomplete="off"
+      ng-model="username"
+    />
+    <a href="#!/chat">
+      <button 
+        class="login-btn"
+        ng-Click="userLogin(username)">
+        Login
+      </button>
+    </a>
+</div>

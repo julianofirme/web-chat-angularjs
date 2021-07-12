@@ -1,0 +1,45 @@
+<div ng-controller="chatCtrl" class="chat-container">
+  <div class="aside">
+    
+    <div class="aside-header">
+      <img src="./src/images/people.png" alt="" />
+      <h2>Users</h2>
+    </div>
+
+    <div class="conversation-list">
+      <div ng-repeat="user in usersOnline">{{user.username}}</div>
+    </div>
+
+    <a href="#!/">
+      <button ng-click="userLogout()">
+        <div class="logout">
+          <img src="/frontend/src/images/logout.png" alt="">
+          <h3>Logout</h3>
+        </div>
+      </button>
+    </a>
+
+  </div>
+
+  <div class="chat-message-list">
+    <div class="msg-row" scroll-glue>
+      <div class="msg-box" ng-repeat="msg in messages">
+        <p class="msg-meta">
+          <span>{{msg.username}}</span>
+          {{msg.time}}
+        </p>
+        <p>{{msg.msgContent}}</p>
+      </div>
+    </div>
+    <div class="chat-form">
+      <input
+        type="text"
+        placeholder="Digite sua mensagem"
+        ng-model="messageInput"
+      />
+      <button ng-Click="onSendMessage(messageInput)">
+        <img src="./src/images/send-svgrepo-com.svg" alt="Send button" />
+      </button>
+    </div>
+  </div>
+</div>

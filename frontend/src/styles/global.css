@@ -1,0 +1,36 @@
+@import "./login.css";
+@import "./chat.css";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+body {
+    background: url(../images/background.svg);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button, 
+input,
+a {
+    border: none;
+    background: none;
+    outline: none;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
