@@ -161,6 +161,10 @@
     .chat-form input {
         width: 220px;
     }
+
+    .logout {
+        display: none;
+    }
 }
 
 @media (max-width: 720px) and (max-height: 480px){
@@ -170,6 +174,10 @@
         height: 340px;
     }
 
+    .msg-row {
+        width: 470px;
+    }
+
     .chat-form {
         width: 470px;
     }
@@ -177,4 +185,5 @@
     .chat-form input {
         width: 360px;
     }
+
 }

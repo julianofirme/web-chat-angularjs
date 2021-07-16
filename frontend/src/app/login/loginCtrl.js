@@ -1,13 +1,22 @@
-angular
-    .module('webChat')
-    .controller('loginCtrl', loginController);
+angular.module("webChat").controller("loginCtrl", loginController);
 
-loginController.$inject = ['$scope', 'socket'];
+loginController.$inject = ["$scope", "api"];
 
-function loginController($scope, socket) {
+function loginController($scope, api) {
+  $scope.rooms = [
+    { roomName: "Geral" },
+    { roomName: "Movies" },
+    { roomName: "Games" },
+  ];
 
-    $scope.userLogin = (username) => {
-        socket.io.emit("userLogged", username);
+  $scope.userLogin = (username, room) => {
+    const userData = {
+      username: $scope.user.username,
+      room: $scope.user.room.roomName,
     };
-};
 
+    api.postUser(userData);
+
+    console.log(`user: ${username}\nroom: ${room.roomName}`);
+  };
+}

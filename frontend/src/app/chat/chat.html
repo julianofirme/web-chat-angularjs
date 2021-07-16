@@ -1,6 +1,5 @@
 <div ng-controller="chatCtrl" class="chat-container">
   <div class="aside">
-    
     <div class="aside-header">
       <img src="./src/images/people.png" alt="" />
       <h2>Users</h2>
@@ -13,12 +12,11 @@
     <a href="#!/">
       <button ng-click="userLogout()">
         <div class="logout">
-          <img src="/frontend/src/images/logout.png" alt="">
+          <img src="/frontend/src/images/logout.png" alt="" />
           <h3>Logout</h3>
         </div>
       </button>
     </a>
-
   </div>
 
   <div class="chat-message-list">
@@ -36,8 +34,13 @@
         type="text"
         placeholder="Digite sua mensagem"
         ng-model="messageInput"
+        name="message"
+        ng-required="true"
       />
-      <button ng-Click="onSendMessage(messageInput)">
+      <button
+        ng-Click="onSendMessage(messageInput)"
+        ng-disabled="message.$valid"
+      >
         <img src="./src/images/send-svgrepo-com.svg" alt="Send button" />
       </button>
     </div>

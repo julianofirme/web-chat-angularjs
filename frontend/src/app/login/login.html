@@ -1,17 +1,29 @@
 <div ng-controller="loginCtrl" class="login-box">
   <h3>Login</h3>
-    <input
-      type="text"
-      class="username-input"
-      placeholder="Username"
-      autocomplete="off"
-      ng-model="username"
-    />
-    <a href="#!/chat">
-      <button 
-        class="login-btn"
-        ng-Click="userLogin(username)">
-        Login
-      </button>
-    </a>
+  <input
+    type="text"
+    class="username-input"
+    placeholder="Username"
+    autocomplete="off"
+    ng-model="user.username"
+    name="username"
+  />
+
+  <select
+    class="room-input"
+    ng-model="user.room"
+    ng-options="room.roomName for room in rooms"
+  >
+    <option selected disabled hidden value="">Choose a room</option>
+  </select>
+
+  <a href="#!/chat">
+    <button
+      type="submit"
+      class="login-btn"
+      ng-Click="userLogin(user.username, user.room)"
+    >
+      Sing in
+    </button>
+  </a>
 </div>

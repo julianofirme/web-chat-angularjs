@@ -1,3 +1,4 @@
 {
-    "liveServer.settings.multiRootWorkspaceName": "webchat-angular"
+    "liveServer.settings.multiRootWorkspaceName": "webchat-angular",
+    "git.ignoreLimitWarning": true
 }
