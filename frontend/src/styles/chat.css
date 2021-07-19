@@ -117,6 +117,14 @@
     color: rgb(35, 117, 211);
 }
 
+.room-name {
+    background: #003a86;
+    padding: 3px;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
 @media (max-width: 480px) and (max-height: 640px) {
     .chat-container {
         width: 320px;

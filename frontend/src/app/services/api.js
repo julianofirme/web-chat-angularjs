@@ -7,19 +7,29 @@ function factory($http) {
     getUsers,
     deleteUser,
     postUser,
+    getMessages,
+    getSession
   };
 
   return service;
 
+  function getSession() {
+    return $http.get("/chat/api/get_session");
+  }
+
   function getUsers() {
-    return $http.get("http://localhost:3000/chat/api/get_users");
+    return $http.get("/chat/api/get_users");
   }
-
+  
   function postUser(data) {
-    return $http.post("http://localhost:3000/chat/api/post_user", data);
+    return $http.post("/chat/api/post_user", data);
   }
-
+  
   function deleteUser(id) {
-    return $http.delete(`http://localhost:3000/chat/api/delete_user/${id}`);
+    return $http.delete(`/chat/api/delete_user/${id}`);
+  }
+  
+  function getMessages() {
+    return $http.get("/chat/api/get_messages");
   }
 }

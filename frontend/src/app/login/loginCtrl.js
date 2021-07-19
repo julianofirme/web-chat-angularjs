@@ -4,19 +4,18 @@ loginController.$inject = ["$scope", "api"];
 
 function loginController($scope, api) {
   $scope.rooms = [
-    { roomName: "Geral" },
-    { roomName: "Movies" },
-    { roomName: "Games" },
+    { roomName: "Geral", roomId: '1' },
+    { roomName: "Movies", roomId: '2'},
+    { roomName: "Games", roomId: '3'}
   ];
 
   $scope.userLogin = (username, room) => {
     const userData = {
-      username: $scope.user.username,
-      room: $scope.user.room.roomName,
+      username: username,
+      roomName: room.roomName,
+      roomId: room.roomId
     };
 
     api.postUser(userData);
-
-    console.log(`user: ${username}\nroom: ${room.roomName}`);
   };
 }

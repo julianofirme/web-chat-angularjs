@@ -2,9 +2,9 @@ angular
     .module('webChat')
     .config(config); 
 
-config.$inject = ['$routeProvider'];
+config.$inject = ['$routeProvider', '$httpProvider'];
 
-function config($routeProvider) {
+function config($routeProvider, $httpProvider) {
     $routeProvider
         .when("/", {
             templateUrl: "/frontend/src/app/login/login.html"
@@ -12,6 +12,8 @@ function config($routeProvider) {
         .when("/chat", {
             templateUrl: "/frontend/src/app/chat/chat.html"
         });
+
+    $httpProvider.defaults.withCredentials = true;
 };
 
 
