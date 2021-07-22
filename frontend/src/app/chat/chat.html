@@ -6,10 +6,13 @@
     </div>
 
     <div class="conversation-list">
-      <div class="room-name">
-          {{roomName}}
+      <div ng-repeat="room in rooms">
+        <p class="room-name">{{room.roomName}}</p>
+
+        <div class="user" ng-repeat="user in room.users">
+          {{user.username}}
+        </div>
       </div>
-      <div ng-repeat="user in usersOnline">{{user.username}}</div>
     </div>
 
     <a href="#!/">

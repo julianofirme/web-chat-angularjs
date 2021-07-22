@@ -3,33 +3,29 @@ angular.module("webChat").factory("api", factory);
 factory.$inject = ["$http"];
 
 function factory($http) {
-  let service = {
-    getUsers,
-    deleteUser,
-    postUser,
-    getMessages,
-    getSession
-  };
-
-  return service;
-
-  function getSession() {
-    return $http.get("/chat/api/get_session");
-  }
-
-  function getUsers() {
-    return $http.get("/chat/api/get_users");
-  }
+  return  {
+    getSession() {
+      return $http.get("/chat/api/session");
+    },
   
-  function postUser(data) {
-    return $http.post("/chat/api/post_user", data);
-  }
-  
-  function deleteUser(id) {
-    return $http.delete(`/chat/api/delete_user/${id}`);
-  }
-  
-  function getMessages() {
-    return $http.get("/chat/api/get_messages");
-  }
+    getUsers() {
+      return $http.get("/chat/api/users");
+    },
+    
+    postUser(data) {
+      return $http.post("/chat/api/user", data);
+    },
+    
+    deleteUser(id) {
+      return $http.delete(`/chat/api/${id}`);
+    },
+    
+    getMessages() {
+      return $http.get("/chat/api/messages");
+    },
+    
+    getRooms() {
+      return $http.get("/chat/api/rooms");
+    },
+  }  
 }
