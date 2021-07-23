@@ -5,7 +5,6 @@ const cors = require("cors");
 const session = require("express-session");
 
 const router = require("./routes");
-const formatMessage = require("./utils/formatMessage");
 
 const { Server } = require("socket.io");
 const io = new Server(server, {
@@ -16,6 +15,7 @@ const io = new Server(server, {
   },
 });
 
+const socket = require('./socket')(io);
 const PORT = process.env.PORT || 3000;
 
 app.use(
@@ -31,23 +31,6 @@ app.use(cors());
 app.use(express.json());
 app.use(router);
 
-const messages = [];
-
-io.on("connection", (socket) => {
-  socket.on("userJoinChat", (user) => {
-    io.emit("userLoggedin", user);
-    socket.join(user.roomId);
-
-    socket.on("getMessage", (msg) => {
-      const messageData = formatMessage(user.username, user.roomId, msg);
-      messages.push(messageData);
-      io.to(user.roomId).emit("sendedMessage", messageData);
-    });
-
-    socket.on("logout", () => {
-      io.emit("userLogoutID", user);
-    });
-  });
-});
-
 server.listen(PORT, () => console.log(`server running on port ${PORT}!`));
+
+module.exports = server;

@@ -33,10 +33,13 @@ router.post("/user", (req, res) => {
     const userIndex = room.users.findIndex((user) => user.id === newUser.id);
     if (room.roomId === newUser.roomId && userIndex < 0) {
       room.users.push(newUser);
+      res.status(200).send({ msg: "user has been logged" });
+    }
+
+    if (room.roomId !== newUser.roomId) {
+      res.status(404);
     }
   });
-
-  res.status(200).send({ msg: "user has been logged" });
 });
 
 router.get("/users", (req, res) => {
@@ -44,23 +47,27 @@ router.get("/users", (req, res) => {
 });
 
 router.get("/session", (req, res) => {
-  res.json(req.session.user);
+  res.status(200).json(req.session.user);
 });
 
 router.get("/rooms", (req, res) => {
-  res.json(roomsMock);
+  res.status(200).json(roomsMock);
 });
 
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
 
   roomsMock.map((room) => {
-    const userIndex = room.users.findIndex((user) => user.id === id);
-    room.users.splice(userIndex, 1);
-    usersOnline.splice(userIndex, 1);
+    room.users.map((user) => {
+      if (user.id === id) {
+        const userIndex = room.users.indexOf(user);
+        room.users.splice(userIndex, 1);
+        usersOnline.splice(userIndex, 1);
+      }
+    });
   });
 
-  res.json({ sucess: "user has been deleted" });
+  res.status(200).send({ msg: "user has been deleted" })
 });
 
 module.exports = router;
